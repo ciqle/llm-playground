@@ -1,5 +1,6 @@
 langchain
 langchain-community
+langchain_experimental
 langchain-ollama
 langchain-openai
 langchain-postgres
