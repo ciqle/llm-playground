@@ -1,4 +1,6 @@
 beautifulsoup4 # Enable WebBaseLoader
+duckduckgo-search
+httpx[socks]
 langchain
 langchain-community
 langchain_experimental
