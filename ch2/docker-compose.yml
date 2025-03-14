@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  pgvector:
+    image: pgvector/pgvector:pg16
+    container_name: pgvector-container
+    environment:
+      - POSTGRES_USER=langchain
+      - POSTGRES_PASSWORD=langchain
+      - POSTGRES_DB=langchain
+    ports:
+      - "6024:5432"
+    volumes:
+      - pgvector_data:/var/lib/postgresql/data
+    restart: unless-stopped
+  
+  adminer:
+    image: adminer
+    container_name: adminer-container
+    ports:
+      - "8080:8080"
+    environment:
+      - ADMINER_DEFAULT_SERVER=pgvector
+    depends_on:
+      - pgvector
+    restart: unless-stopped
+
+volumes:
+  pgvector_data:
+    name: pgvector_data
