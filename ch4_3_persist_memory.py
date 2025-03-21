@@ -44,13 +44,15 @@ if __name__ == "__main__":
 
     # 运行对话并持久化存储状态
     result_1 = graph.invoke(
-        {"messages": [HumanMessage("hi, my name is Jack!")]}, thread1
+        input={"messages": [HumanMessage("hi, my name is Jack!")]}, config=thread1
     )
     print(result_1)
     print()
 
     # 提问第二个问题，系统应能够记住之前的对话内容
-    result_2 = graph.invoke({"messages": [HumanMessage("what is my name?")]}, thread1)
+    result_2 = graph.invoke(
+        input={"messages": [HumanMessage("what is my name?")]}, config=thread1
+    )
     print(result_2)
     print()
 
