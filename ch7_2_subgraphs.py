@@ -14,7 +14,7 @@ class SubgraphState(TypedDict):
 
 
 # 定义子图
-def subgraph_node(state: SubgraphState):
+def subgraph_node(state: SubgraphState) -> SubgraphState:
     return {"bar": state["bar"] + "baz"}
 
 
@@ -26,8 +26,9 @@ subgraph = subgraph_builder.compile()
 
 
 # 定义调用子图的父图节点
-def node(state: State):
+def node(state: State) -> State:
     # 将父图状态转换为子图状态
+    # 将父图里的foo传递给子图的bar
     response = subgraph.invoke({"bar": state["foo"]})
     # 将响应转换回父图状态
     return {"foo": response["bar"]}
